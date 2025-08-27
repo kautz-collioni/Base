@@ -8,7 +8,7 @@ from statsmodels.tsa.seasonal import STL
 from plotly.subplots import make_subplots
 import nbformat
 
-database = pd.read_csv("../2. Bases de Dados/Cafeteria Fictícia.csv")
+database = pd.read_csv("Cafeteria Fictícia.csv")
 
 # database.sample(10)
 
@@ -540,4 +540,5 @@ for cell in nb.cells:
 
 with open("Conector.py", "w", encoding="utf-8") as f:
     f.write(code)
+
 
