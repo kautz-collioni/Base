@@ -79,6 +79,8 @@ def apply_common_styles():
     st.markdown(common_style, unsafe_allow_html = True)
 
 # ======================== LOGIN PAGE ========================
+def login_page():
+    
     # Apply common styles
     apply_common_styles()
 
