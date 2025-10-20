@@ -189,7 +189,7 @@ def back_to_login():
     st.session_state.current_section = "Introdução"
     st.session_state.logout_pending = True
 
-    time.sleep(4.0)
+    time.sleep(2.0)
 
 # ======================== MAIN APP ========================
 def main_app():
