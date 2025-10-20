@@ -325,6 +325,7 @@ def main_app():
         # Logout button in sidebar
         if st.button("Sair", key = "logout_btn", use_container_width = True):
             back_to_login()
+            st.rerun()
 
         st.markdown("<br>", unsafe_allow_html = True)  # Add some space
 
