@@ -4,11 +4,11 @@ import Conector as con
 import time
 import base64
 
-# ========================= PAGE LAYOUT ==========================================
+# ========================= PAGE LAYOUT ======================================
 
 st.set_page_config(
     page_title = "Relatório Integrado | Kautz-Collioni & Cia.",
-    layout = "wide",
+    layout = "wide", # Usar "wide" para ser compatível com "centered" (ou usar apenas um)
     initial_sidebar_state = "expanded",
     menu_items = {
         'Get Help': 'https://docs.streamlit.io/',
@@ -30,7 +30,7 @@ if 'logout_pending' not in st.session_state:
     st.session_state.logout_pending = False
 
 if st.session_state.logout_pending:
-    st.session_state.logout_pending = False
+    st.session_state.logout_pending = False 
     st.rerun()
 
 # ======================== STYLE CONFIGURATION ========================
@@ -77,7 +77,6 @@ def apply_common_styles():
     </style>
     """
     st.markdown(common_style, unsafe_allow_html = True)
-
 
 # ======================== LOGIN PAGE ========================
 def login_page():
@@ -191,8 +190,6 @@ def back_to_login():
     st.session_state.logged_in = False
     st.session_state.current_section = "Introdução"
     st.session_state.logout_pending = True
-
-    time.sleep(0.5)
 
 # ======================== MAIN APP ========================
 def main_app():
