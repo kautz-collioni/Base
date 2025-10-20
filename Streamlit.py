@@ -81,10 +81,10 @@ def apply_common_styles():
 # ======================== LOGIN PAGE ========================
 def login_page():
     # Page configuration
-    #st.set_page_config(
-    #    page_title = "Área de Acesso | Kautz-Collioni & Cia.",
-    #    layout = "centered"
-    #)
+    st.set_page_config(
+        page_title = "Área de Acesso | Kautz-Collioni & Cia.",
+        layout = "centered"
+    )
 
     # Apply common styles
     apply_common_styles()
