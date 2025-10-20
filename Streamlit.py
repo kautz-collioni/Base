@@ -212,8 +212,6 @@ def back_to_login():
         del st.session_state[key]
     st.session_state.logout_pending = True 
 
-    st.rerun()
-
 # ======================== MAIN APP ========================
 def main_app():
     # Page configuration
