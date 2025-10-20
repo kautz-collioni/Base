@@ -92,7 +92,7 @@ def login_page():
     }
 
     .block-container {
-        max-width: 450px !important;
+        max-width: 50% !important;
         margin-left: auto;
         margin-right: auto;
         padding-top: 1rem !important;
