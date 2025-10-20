@@ -445,6 +445,13 @@ def main_app():
     )
 
 # ======================== MAIN CONTROLLER ========================
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
+if 'current_section' not in st.session_state:
+    st.session_state.current_section = "Introdução"
+
+# Controlador principal
 if st.session_state.logged_in:
     main_app()
 else:
