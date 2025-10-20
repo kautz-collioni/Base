@@ -79,13 +79,6 @@ def apply_common_styles():
     st.markdown(common_style, unsafe_allow_html = True)
 
 # ======================== LOGIN PAGE ========================
-def login_page():
-    # Page configuration
-    st.set_page_config(
-        page_title = "Área de Acesso | Kautz-Collioni & Cia.",
-        layout = "centered"
-    )
-
     # Apply common styles
     apply_common_styles()
 
@@ -99,6 +92,8 @@ def login_page():
     .block-container {
         padding-top: 1rem !important;
         padding-bottom: 0.5rem !important;
+        margin-left: 30rem !important;
+        margin-right: 30rem !important;
     }
     </style>
     """
