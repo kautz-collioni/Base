@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import Conector as con
 import time
 import base64
@@ -166,10 +167,22 @@ def login_page():
 
 # ======================== LOGOUT FUNCTION ========================
 def back_to_login():
+    
+    for key in list(st.session_state.keys()):
+        del st.session_state[key]
+
+        # Força o reload completo da aplicação (reinicia o WebSocket)
+        components.html(
+            "<script>window.location.reload()</script>",
+            height=0,
+        )
+    
+    '''
     # Reset login status
     st.session_state.logged_in = False
     st.session_state.current_section = "Introdução"
     st.rerun()
+    '''
 
 # ======================== MAIN APP ========================
 def main_app():
