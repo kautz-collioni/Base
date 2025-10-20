@@ -235,7 +235,7 @@ def back_to_login():
     st.session_state.logged_in = False
     st.session_state.current_section = "Introdução"
     st.session_state.logout_pending = True
-    pass
+    
 # ======================== MAIN APP ========================
 def main_app():
     # Page configuration
