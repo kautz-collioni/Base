@@ -167,16 +167,27 @@ def login_page():
 
 # ======================== LOGOUT FUNCTION ========================
 def back_to_login():
-    
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
 
-        # Força o reload completo da aplicação (reinicia o WebSocket)
-        components.html(
-            "<script>window.location.reload()</script>",
-            height=0,
-        )
-    
+    try:
+        # Limpar caches primeiro
+        st.cache_data.clear()
+        st.cache_resource.clear()
+        
+        # Resetar apenas os estados essenciais
+        st.session_state.logged_in = False
+        st.session_state.current_section = "Introdução"
+        
+        # Remover username se existir
+        if 'username' in st.session_state:
+            del st.session_state.username
+        
+        # Forçar rerun para aplicar as mudanças
+        st.rerun()
+        
+    except Exception as e:
+        # Fallback seguro
+        st.session_state.clear()
+        st.rerun()
     '''
     # Reset login status
     st.session_state.logged_in = False
