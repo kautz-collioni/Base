@@ -34,46 +34,6 @@ if st.session_state.logout_pending:
     st.session_state.logout_pending = False 
     st.rerun()
 
-# ====================== LOADING OVERLAY ============================
-
-def show_loading_overlay():
-    if st.session_state.get('logout_pending', False):
-        # HTML/CSS para criar um overlay de tela cheia
-        overlay_html = """
-        <style>
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white; /* Cor de fundo branca para transição suave */
-            z-index: 99999; /* Garante que fique acima de tudo */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.3s ease-out;
-        }
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #4b7bec; /* Cor do spinner (azul do seu app) */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        </style>
-        <div class="loading-overlay">
-            <div class="loading-spinner"></div>
-        </div>
-        """
-        st.markdown(overlay_html, unsafe_allow_html=True)
-
 # ======================== STYLE CONFIGURATION ========================
 def apply_common_styles():
     common_style = """
@@ -119,7 +79,26 @@ def apply_common_styles():
     """
     st.markdown(common_style, unsafe_allow_html = True)
 
-show_loading_overlay()
+
+if st.session_state.get('logout_pending', False):
+    st.markdown("""
+    <style>
+    /* Oculta o conteúdo principal do app (incluindo a barra lateral e o container principal) */
+    .stApp > header,
+    .stApp > section,
+    .stApp > div {
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    /* Exceção: Assegura que o spinner nativo do Streamlit, que aparece com a pausa, seja visível */
+    .stApp [data-testid="stSidebar"], 
+    .stApp [data-testid="stHeader"] {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # ======================== LOGIN PAGE ========================
 def login_page():
@@ -228,13 +207,12 @@ def login_page():
 
 # ======================== LOGOUT FUNCTION ========================
 def back_to_login():
-    for key in st.session_state.keys():
+    keys_to_delete = list(st.session_state.keys())
+    for key in keys_to_delete:
         del st.session_state[key]
-        
-    # 2. Define o estado para iniciar o processo de logout.
-    st.session_state.logged_in = False
-    st.session_state.current_section = "Introdução"
-    st.session_state.logout_pending = True
+    st.session_state.logout_pending = True 
+
+    st.rerun()
 
 # ======================== MAIN APP ========================
 def main_app():
