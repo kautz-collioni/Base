@@ -169,25 +169,27 @@ def login_page():
 def back_to_login():
 
     try:
-        # Limpar caches primeiro
-        st.cache_data.clear()
-        st.cache_resource.clear()
-        
-        # Resetar apenas os estados essenciais
+        # Abordagem 1: Tentativa padrão com limpeza suave
         st.session_state.logged_in = False
         st.session_state.current_section = "Introdução"
         
-        # Remover username se existir
+        # Limpar apenas o username se existir
         if 'username' in st.session_state:
             del st.session_state.username
-        
-        # Forçar rerun para aplicar as mudanças
+            
+        # Forçar um rerun imediato
         st.rerun()
         
     except Exception as e:
-        # Fallback seguro
+        # Abordagem 2: Se falhar, usar método mais agressivo
+        st.warning("Reiniciando sessão...")
+        time.sleep(1)
+        
+        # Usar query parameters para forçar recarregamento
+        st.query_params.clear()
         st.session_state.clear()
         st.rerun()
+
     '''
     # Reset login status
     st.session_state.logged_in = False
@@ -445,14 +447,19 @@ def main_app():
     )
 
 # ======================== MAIN CONTROLLER ========================
+# Inicialização MÍNIMA do session state - apenas o essencial
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-if 'current_section' not in st.session_state:
-    st.session_state.current_section = "Introdução"
+# Não inicializar current_section aqui - deixe para dentro das funções
 
-# Controlador principal
 if st.session_state.logged_in:
+    # Garantir que current_section existe apenas quando logado
+    if 'current_section' not in st.session_state:
+        st.session_state.current_section = "Introdução"
     main_app()
 else:
+    # Remover current_section quando não logado
+    if 'current_section' in st.session_state:
+        del st.session_state.current_section
     login_page()
