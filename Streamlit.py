@@ -164,17 +164,17 @@ def login_page():
         """,
         unsafe_allow_html = True
     )
-
+'''
 # ======================== LOGOUT FUNCTION ========================
 def back_to_login():
     st.cache_data.clear()
     st.cache_resource.clear()
-    
+
     # Reset login status
     st.session_state.logged_in = False
     st.session_state.current_section = "Introdução"
     st.rerun()
-   
+'''  
 
 # ======================== MAIN APP ========================
 def main_app():
@@ -328,7 +328,10 @@ def main_app():
         
         # Logout button in sidebar
         if st.button("Sair", key = "logout_btn", use_container_width = True):
-            back_to_login()
+            st.session_state.logged_in = False
+            st.session_state.current_section = "Introdução"
+
+            st.rerun()
 
         st.markdown("<br>", unsafe_allow_html = True)  # Add some space
 
