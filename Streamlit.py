@@ -13,6 +13,13 @@ if 'logged_in' not in st.session_state:
 if 'current_section' not in st.session_state:
     st.session_state.current_section = "Introdução"
 
+if 'logout_pending' not in st.session_state:
+    st.session_state.logout_pending = False
+
+if st.session_state.logout_pending:
+    st.session_state.logout_pending = False 
+    st.rerun()
+
 # ======================== STYLE CONFIGURATION ========================
 def apply_common_styles():
     common_style = """
@@ -167,10 +174,9 @@ def login_page():
 
 # ======================== LOGOUT FUNCTION ========================
 def back_to_login():
-    # Reset login status
     st.session_state.logged_in = False
     st.session_state.current_section = "Introdução"
-
+    st.session_state.logout_pending = True
 
 # ======================== MAIN APP ========================
 def main_app():
@@ -323,10 +329,8 @@ def main_app():
             st.rerun()
         
         # Logout button in sidebar
-        if st.button("Sair", key = "logout_btn", use_container_width = True):
-            back_to_login()
-            st.rerun()
-
+        st.button("Sair", key = "logout_btn", use_container_width = True, on_click = back_to_login)
+    
         st.markdown("<br>", unsafe_allow_html = True)  # Add some space
 
         # Sidebar footer
