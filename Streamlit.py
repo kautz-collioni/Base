@@ -4,6 +4,19 @@ import Conector as con
 import time
 import base64
 
+# ========================= PAGE LAYOUT ==========================================
+
+st.set_page_config(
+    page_title = "Relatório Integrado | Kautz-Collioni & Cia.",
+    layout = "wide",
+    initial_sidebar_state = "expanded",
+    menu_items = {
+        'Get Help': 'https://docs.streamlit.io/',
+        'Report a bug': "https://github.com/streamlit/streamlit/issues",
+        'About': ""
+    }
+)
+
 # ======================== SESSION STATE INITIALIZATION ========================
 # Control login status
 if 'logged_in' not in st.session_state:
@@ -68,10 +81,10 @@ def apply_common_styles():
 # ======================== LOGIN PAGE ========================
 def login_page():
     # Page configuration
-    st.set_page_config(
-        page_title = "Área de Acesso | Kautz-Collioni & Cia.",
-        layout = "centered"
-    )
+    #st.set_page_config(
+    #    page_title = "Área de Acesso | Kautz-Collioni & Cia.",
+    #    layout = "centered"
+    #)
 
     # Apply common styles
     apply_common_styles()
@@ -181,16 +194,16 @@ def back_to_login():
 # ======================== MAIN APP ========================
 def main_app():
     # Page configuration
-    st.set_page_config(
-        page_title = "Relatório Integrado | Kautz-Collioni & Cia.",
-        layout = "wide",
-        initial_sidebar_state = "expanded",
-        menu_items = {
-            'Get Help': 'https://docs.streamlit.io/',
-            'Report a bug': "https://github.com/streamlit/streamlit/issues",
-            'About': ""
-        }
-    )
+    #st.set_page_config(
+    #    page_title = "Relatório Integrado | Kautz-Collioni & Cia.",
+    #    layout = "wide",
+    #    initial_sidebar_state = "expanded",
+    #    menu_items = {
+    #        'Get Help': 'https://docs.streamlit.io/',
+    #        'Report a bug': "https://github.com/streamlit/streamlit/issues",
+    #        'About': ""
+    #    }
+    #)
 
     # Apply common styles
     apply_common_styles()
