@@ -92,11 +92,12 @@ def login_page():
     }
 
     .block-container {
+        max-width: 450px !important;
+        margin-left: auto;
+        margin-right: auto;
         padding-top: 1rem !important;
         padding-bottom: 0.5rem !important;
-        margin-left: 30rem !important;
-        margin-right: 30rem !important;
-    }
+     }
     </style>
     """
     st.markdown(compact_style, unsafe_allow_html = True)
