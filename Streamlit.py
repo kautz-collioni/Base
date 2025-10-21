@@ -323,7 +323,7 @@ def main_app():
 
         # Sidebar logo
         try:
-            with open("cabecalho_sidebar.svg", "rb") as f:
+            with open("teste.svg", "rb") as f:
                 image_data = f.read()
                 image_base64 = base64.b64encode(image_data).decode()
             
