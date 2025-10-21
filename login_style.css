@@ -1,0 +1,41 @@
+[data-testid="stAppViewContainer"] {
+    padding: 1rem 1rem 0.5rem 1rem !important;
+    background-color: #ffffff;
+}
+
+.block-container {
+    max-width: 50% !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+[data-testid="stHeader"] {
+    background-color: rgba(0,0,0,0);
+}
+
+div[data-testid="stTextInput"] input {
+    background-color: #f0f2f6 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 16px !important;
+    font-size: 16px !important;
+    color: #000000 !important;
+    font-weight: normal !important;
+}
+
+div[data-testid="stTextInput"] label,
+div[data-testid="stTextInput"] label p {
+    color: #000000 !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 46px;
+    font-weight: 700;
+    color: #31333F;
+    margin-bottom: 0.2rem;
+}
